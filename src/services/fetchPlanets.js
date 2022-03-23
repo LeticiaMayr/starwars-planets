@@ -3,7 +3,6 @@ const getPlanetList = async () => {
   const response = await fetch(STARWARS_PLANETS_API_URL);
   const json = await response.json();
   json.results.forEach((planet) => delete planet.residents);
-  console.log(json);
   return json;
 };
 
