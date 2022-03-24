@@ -44,7 +44,7 @@ function NumericFilter() {
         <option value="surface_water">surface_water</option>
       </select>
       <select
-        data-testid="value-filter"
+        data-testid="comparison-filter"
         name="comparison"
         onChange={ handlechange }
       >
