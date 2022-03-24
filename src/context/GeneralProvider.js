@@ -24,12 +24,19 @@ function GeneralProvider({ children }) {
     },
   });
 
+  // Establishes numeric filters
+  const [numericFilters, setNumericFilters] = useState({
+    filterByNumericValues: [],
+  });
+
   // I need a meme so... HELLO THERE! :D
   const contextValue = {
     planets,
     tableTitles,
     nameFilter,
     setNameFilter,
+    numericFilters,
+    setNumericFilters,
   };
   return (
     <tableContext.Provider value={ contextValue }>

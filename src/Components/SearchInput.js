@@ -11,14 +11,11 @@ function SearchInput() {
     });
   };
   return (
-    <>
-      <h1>Letwars</h1>
-      <input
-        type="text"
-        data-testid="name-filter"
-        onChange={ handlechange }
-      />
-    </>
+    <input
+      type="text"
+      data-testid="name-filter"
+      onChange={ handlechange }
+    />
   );
 }
 

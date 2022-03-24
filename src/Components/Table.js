@@ -3,6 +3,8 @@ import tableContext from '../context/tableContext';
 
 function Table() {
   const { nameFilter: { filterByName: { name } } } = useContext(tableContext);
+  const { numericFilters } = useContext(tableContext);
+  console.log(numericFilters);
   return (
     <tableContext.Consumer>
       {(value) => (
