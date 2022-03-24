@@ -2,10 +2,19 @@ import React, { useContext } from 'react';
 import tableContext from '../context/tableContext';
 
 function FilterDisplayer() {
-  const { numericFilters: { filterByNumericValues } } = useContext(tableContext);
+  const { numericFilters: { filterByNumericValues },
+    setNumericFilters } = useContext(tableContext);
 
-  const handleClick = () => {
-    console.log('apaga-te cesamu :o');
+  const handleClick = ({ target }) => {
+    console.log(filterByNumericValues);
+    const filtersAfterRemoval = filterByNumericValues
+      .filter((fil) => fil.column !== target.name);
+    setNumericFilters({
+      filterByNumericValues: [
+        ...filtersAfterRemoval,
+      ],
+    });
+    console.log(filterByNumericValues);
   };
 
   return (
@@ -18,6 +27,7 @@ function FilterDisplayer() {
             <button
               type="button"
               onClick={ handleClick }
+              name={ filt.column }
             >
               X
             </button>
