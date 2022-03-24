@@ -29,7 +29,7 @@ function GeneralProvider({ children }) {
     filterByNumericValues: [],
   });
 
-  // Função pra checar se já existe um filtro daquela coluna
+  // Check for already existing filters of said column
 
   const checkFilters = (columnToBeFiltered) => {
     const { filterByNumericValues } = numericFilters;
@@ -40,6 +40,33 @@ function GeneralProvider({ children }) {
     return false;
   };
 
+  // Lets go for the hard part
+
+  const filterPlanet = (p, f) => {
+    if (f.comparison === 'maior que') {
+      if (p[f.column] > f.value) {
+        return true;
+      }
+      return false;
+    }
+    if (f.comparison === 'menor que') {
+      if (p[f.column] < f.value) {
+        return true;
+      }
+      return false;
+    }
+    if (f.comparison === 'igual a') {
+      if (p[f.column] === f.value) {
+        return true;
+      }
+      return false;
+    }
+  };
+
+  const filteredPlanets = planets
+    .filter((planet) => numericFilters.filterByNumericValues
+      .every((fi) => filterPlanet(planet, fi)));
+
   // I need a meme so... HELLO THERE! :D
   const contextValue = {
     planets,
@@ -49,6 +76,7 @@ function GeneralProvider({ children }) {
     numericFilters,
     setNumericFilters,
     checkFilters,
+    filteredPlanets,
   };
   return (
     <tableContext.Provider value={ contextValue }>
