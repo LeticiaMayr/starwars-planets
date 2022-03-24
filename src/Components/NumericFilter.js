@@ -10,15 +10,17 @@ function NumericFilter() {
     },
   );
 
-  const { setNumericFilters, numericFilters } = useContext(tableContext);
+  const { setNumericFilters, numericFilters, checkFilters } = useContext(tableContext);
   const handleClick = () => {
-    setNumericFilters({
-      filterByNumericValues: [
-        ...numericFilters.filterByNumericValues,
-        choosenFilters,
-      ],
-    });
-    setChoosenFilters(choosenFilters);
+    if (!checkFilters(choosenFilters.column)) {
+      setNumericFilters({
+        filterByNumericValues: [
+          ...numericFilters.filterByNumericValues,
+          choosenFilters,
+        ],
+      });
+      setChoosenFilters(choosenFilters);
+    }
   };
 
   const handlechange = (event) => {

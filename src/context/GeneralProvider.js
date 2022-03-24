@@ -29,6 +29,17 @@ function GeneralProvider({ children }) {
     filterByNumericValues: [],
   });
 
+  // Função pra checar se já existe um filtro daquela coluna
+
+  const checkFilters = (columnToBeFiltered) => {
+    const { filterByNumericValues } = numericFilters;
+    const columnValues = filterByNumericValues.map((fil) => fil.column);
+    if (columnValues.includes(columnToBeFiltered)) {
+      return true;
+    }
+    return false;
+  };
+
   // I need a meme so... HELLO THERE! :D
   const contextValue = {
     planets,
@@ -37,6 +48,7 @@ function GeneralProvider({ children }) {
     setNameFilter,
     numericFilters,
     setNumericFilters,
+    checkFilters,
   };
   return (
     <tableContext.Provider value={ contextValue }>

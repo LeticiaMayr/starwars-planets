@@ -4,6 +4,7 @@ import Table from './Components/Table';
 import SearchInput from './Components/SearchInput';
 import GeneralProvider from './context/GeneralProvider';
 import NumericFilter from './Components/NumericFilter';
+import FilterDisplayer from './Components/FilterDisplayer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <h1>Letwars</h1>
       <SearchInput />
       <NumericFilter />
+      <FilterDisplayer />
       <Table />
     </GeneralProvider>
   );
