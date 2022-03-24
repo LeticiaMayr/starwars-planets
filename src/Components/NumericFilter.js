@@ -59,6 +59,7 @@ function NumericFilter() {
         onChange={ handlechange }
       />
       <button
+        data-testid="button-filter"
         type="button"
         onClick={ handleClick }
       >
