@@ -44,19 +44,19 @@ function GeneralProvider({ children }) {
 
   const filterPlanet = (p, f) => {
     if (f.comparison === 'maior que') {
-      if (p[f.column] > f.value) {
+      if (Number(p[f.column]) > Number(f.value)) {
         return true;
       }
       return false;
     }
     if (f.comparison === 'menor que') {
-      if (p[f.column] < f.value) {
+      if (Number(p[f.column]) < Number(f.value)) {
         return true;
       }
       return false;
     }
     if (f.comparison === 'igual a') {
-      if (p[f.column] === f.value) {
+      if (Number(p[f.column]) === Number(f.value)) {
         return true;
       }
       return false;

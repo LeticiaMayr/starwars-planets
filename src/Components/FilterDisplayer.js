@@ -6,7 +6,6 @@ function FilterDisplayer() {
     setNumericFilters } = useContext(tableContext);
 
   const handleClick = ({ target }) => {
-    console.log(filterByNumericValues);
     const filtersAfterRemoval = filterByNumericValues
       .filter((fil) => fil.column !== target.name);
     setNumericFilters({
@@ -14,7 +13,6 @@ function FilterDisplayer() {
         ...filtersAfterRemoval,
       ],
     });
-    console.log(filterByNumericValues);
   };
 
   return (
@@ -22,9 +20,13 @@ function FilterDisplayer() {
       <h3>Filtros Ativos</h3>
       {filterByNumericValues
         .map((filt) => (
-          <p key={ filt.column }>
+          <p
+            data-testid="filter"
+            key={ filt.column }
+          >
             {`${filt.column} ${filt.comparison} ${filt.value}`}
             <button
+              data-testid="button-remove-filters"
               type="button"
               onClick={ handleClick }
               name={ filt.column }

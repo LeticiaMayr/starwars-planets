@@ -54,6 +54,7 @@ function NumericFilter() {
       </select>
       <input
         data-testid="value-filter"
+        defaultValue="0"
         type="number"
         name="value"
         onChange={ handlechange }
@@ -63,7 +64,7 @@ function NumericFilter() {
         type="button"
         onClick={ handleClick }
       >
-        Adicionar Filtro
+        Filtrar
       </button>
     </>
   );
