@@ -1,21 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import tableContext from '../context/tableContext';
 
 function NumericFilter() {
-  const [choosenFilters, setChoosenFilters] = useState(
-    {
-      column: 'population',
-      comparison: 'maior que',
-      value: '0',
-    },
-  );
-
   const { setNumericFilters, numericFilters,
-    filterOptions, setFilterOptions } = useContext(tableContext);
-
-  useEffect(() => {
-    console.log(filterOptions);
-  }, [filterOptions]);
+    filterOptions, setFilterOptions, choosenFilters,
+    setChoosenFilters, allFilterOptions } = useContext(tableContext);
+  const { filterByNumericValues } = numericFilters;
 
   const handleClick = () => {
     setNumericFilters({
@@ -24,12 +14,13 @@ function NumericFilter() {
         choosenFilters,
       ],
     });
-    setChoosenFilters(choosenFilters);
-    console.log(choosenFilters);
-    // const { filterByNumericValues } = numericFilters;
-    setFilterOptions((state) => state.filter((o) => o !== choosenFilters.column));
-    // setFilterOptions((state) => state
-    //   .filter((o) => (!filterByNumericValues.some((f) => Object.values(f).includes(o)))));
+    const updatedFilters = [...filterByNumericValues, choosenFilters];
+    setFilterOptions((state) => state
+      .filter((o) => (!updatedFilters.some((f) => Object.values(f).includes(o)))));
+    setChoosenFilters({
+      ...choosenFilters,
+      column: filterOptions[1],
+    });
   };
 
   const handlechange = (event) => {
@@ -37,6 +28,13 @@ function NumericFilter() {
       ...choosenFilters,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const removeAllFilters = () => {
+    setNumericFilters({
+      filterByNumericValues: [],
+    });
+    setFilterOptions(allFilterOptions);
   };
 
   return (
@@ -78,6 +76,13 @@ function NumericFilter() {
         onClick={ handleClick }
       >
         Filtrar
+      </button>
+      <button
+        data-testid="button-remove-filters"
+        type="button"
+        onClick={ removeAllFilters }
+      >
+        Remover Filtros
       </button>
     </>
   );

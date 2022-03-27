@@ -6,6 +6,13 @@ import getPlanetList from '../services/fetchPlanets';
 function GeneralProvider({ children }) {
   const [planets, setPlanets] = useState([]);
   const [tableTitles, setTableTitles] = useState([]);
+  const [choosenFilters, setChoosenFilters] = useState(
+    {
+      column: 'population',
+      comparison: 'maior que',
+      value: '0',
+    },
+  );
 
   // To render the filter options dinamically
 
@@ -76,6 +83,9 @@ function GeneralProvider({ children }) {
     filteredPlanets,
     filterOptions,
     setFilterOptions,
+    choosenFilters,
+    setChoosenFilters,
+    allFilterOptions,
   };
   return (
     <tableContext.Provider value={ contextValue }>

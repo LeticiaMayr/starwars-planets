@@ -27,7 +27,7 @@ function FilterDisplayer() {
           >
             {`${filt.column} ${filt.comparison} ${filt.value}`}
             <button
-              data-testid="button-remove-filters"
+              data-testid="filter"
               type="button"
               onClick={ handleClick }
               name={ filt.column }
