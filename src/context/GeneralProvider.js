@@ -4,9 +4,22 @@ import tableContext from './tableContext';
 import getPlanetList from '../services/fetchPlanets';
 
 function GeneralProvider({ children }) {
-  // Fetch planets from API and set the table with no filters
   const [planets, setPlanets] = useState([]);
   const [tableTitles, setTableTitles] = useState([]);
+
+  // To render the filter options dinamically
+
+  const allFilterOptions = ['population',
+    'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
+
+  const [filterOptions, setFilterOptions] = useState(allFilterOptions);
+
+  // Establishes numeric filters
+  const [numericFilters, setNumericFilters] = useState({
+    filterByNumericValues: [],
+  });
+
+  // Component didmount
 
   useEffect(() => {
     const getDataFromAPI = async () => {
@@ -18,27 +31,12 @@ function GeneralProvider({ children }) {
   }, []);
 
   // Establishes the filter that searches based on planet's name
+
   const [nameFilter, setNameFilter] = useState({
     filterByName: {
       name: '',
     },
   });
-
-  // Establishes numeric filters
-  const [numericFilters, setNumericFilters] = useState({
-    filterByNumericValues: [],
-  });
-
-  // Check for already existing filters of said column
-
-  const checkFilters = (columnToBeFiltered) => {
-    const { filterByNumericValues } = numericFilters;
-    const columnValues = filterByNumericValues.map((fil) => fil.column);
-    if (columnValues.includes(columnToBeFiltered)) {
-      return true;
-    }
-    return false;
-  };
 
   // Lets go for the hard part
 
@@ -75,8 +73,9 @@ function GeneralProvider({ children }) {
     setNameFilter,
     numericFilters,
     setNumericFilters,
-    checkFilters,
     filteredPlanets,
+    filterOptions,
+    setFilterOptions,
   };
   return (
     <tableContext.Provider value={ contextValue }>

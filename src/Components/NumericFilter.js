@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import tableContext from '../context/tableContext';
 
 function NumericFilter() {
@@ -10,17 +10,26 @@ function NumericFilter() {
     },
   );
 
-  const { setNumericFilters, numericFilters, checkFilters } = useContext(tableContext);
+  const { setNumericFilters, numericFilters,
+    filterOptions, setFilterOptions } = useContext(tableContext);
+
+  useEffect(() => {
+    console.log(filterOptions);
+  }, [filterOptions]);
+
   const handleClick = () => {
-    if (!checkFilters(choosenFilters.column)) {
-      setNumericFilters({
-        filterByNumericValues: [
-          ...numericFilters.filterByNumericValues,
-          choosenFilters,
-        ],
-      });
-      setChoosenFilters(choosenFilters);
-    }
+    setNumericFilters({
+      filterByNumericValues: [
+        ...numericFilters.filterByNumericValues,
+        choosenFilters,
+      ],
+    });
+    setChoosenFilters(choosenFilters);
+    console.log(choosenFilters);
+    // const { filterByNumericValues } = numericFilters;
+    setFilterOptions((state) => state.filter((o) => o !== choosenFilters.column));
+    // setFilterOptions((state) => state
+    //   .filter((o) => (!filterByNumericValues.some((f) => Object.values(f).includes(o)))));
   };
 
   const handlechange = (event) => {
@@ -37,11 +46,15 @@ function NumericFilter() {
         name="column"
         onChange={ handlechange }
       >
-        <option value="population">population</option>
-        <option value="orbital_period">orbital_period</option>
-        <option value="diameter">diameter</option>
-        <option value="rotation_period">rotation_period</option>
-        <option value="surface_water">surface_water</option>
+        {
+          filterOptions.map((option) => (
+            <option
+              key={ option }
+              value={ option }
+            >
+              {option}
+            </option>))
+        }
       </select>
       <select
         data-testid="comparison-filter"

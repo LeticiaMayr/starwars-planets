@@ -9,7 +9,7 @@ import FilterDisplayer from './Components/FilterDisplayer';
 function App() {
   return (
     <GeneralProvider>
-      <h1>Letwars</h1>
+      <h1>Starwars</h1>
       <SearchInput />
       <NumericFilter />
       <FilterDisplayer />

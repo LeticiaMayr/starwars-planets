@@ -3,7 +3,7 @@ import tableContext from '../context/tableContext';
 
 function FilterDisplayer() {
   const { numericFilters: { filterByNumericValues },
-    setNumericFilters } = useContext(tableContext);
+    setNumericFilters, setFilterOptions, filterOptions } = useContext(tableContext);
 
   const handleClick = ({ target }) => {
     const filtersAfterRemoval = filterByNumericValues
@@ -13,6 +13,7 @@ function FilterDisplayer() {
         ...filtersAfterRemoval,
       ],
     });
+    setFilterOptions([...filterOptions, target.name]);
   };
 
   return (
