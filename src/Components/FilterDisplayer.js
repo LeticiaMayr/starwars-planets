@@ -3,7 +3,8 @@ import tableContext from '../context/tableContext';
 
 function FilterDisplayer() {
   const { numericFilters: { filterByNumericValues },
-    setNumericFilters, setFilterOptions, filterOptions } = useContext(tableContext);
+    setNumericFilters, setFilterOptions, filterOptions,
+    setChoosenFilters } = useContext(tableContext);
 
   const handleClick = ({ target }) => {
     const filtersAfterRemoval = filterByNumericValues
@@ -14,6 +15,11 @@ function FilterDisplayer() {
       ],
     });
     setFilterOptions([...filterOptions, target.name]);
+    setChoosenFilters({
+      column: target.name,
+      comparison: 'maior que',
+      value: '0',
+    });
   };
 
   return (
@@ -27,7 +33,6 @@ function FilterDisplayer() {
           >
             {`${filt.column} ${filt.comparison} ${filt.value}`}
             <button
-              data-testid="filter"
               type="button"
               onClick={ handleClick }
               name={ filt.column }
