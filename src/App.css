@@ -1,41 +1,29 @@
-.App {
+body {
+  background-image: url('https://c.tenor.com/9fAj8-HDLqMAAAAC/star-wars-light.gif ');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: yellow;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 70px;
 }
 
-@media ( prefers-reduced-motion : no-preference ) {
-
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  background-color: black;
+  font-size: large;
+  color: yellow;
 }
 
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
-  justify-content: center;
-  min-height: 100vh;
+input {
+  background-color: black;
+  font-size: large;
+  color: yellow;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+select {
+  background-color: black;
+  font-size: large;
+  color: yellow;
 }

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import tableContext from '../context/tableContext';
+import './Table.css';
 
 function Table() {
   const { nameFilter: { filterByName: { name } },

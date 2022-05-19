@@ -23,7 +23,7 @@ function FilterDisplayer() {
   };
 
   return (
-    <>
+    <div className="filterDisplayerContainer">
       <h3>Filtros Ativos</h3>
       {filterByNumericValues
         .map((filt) => (
@@ -41,7 +41,7 @@ function FilterDisplayer() {
             </button>
           </p>
         ))}
-    </>
+    </div>
   );
 }
 

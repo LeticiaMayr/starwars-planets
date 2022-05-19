@@ -8,19 +8,22 @@ function NumericFilter() {
   const { filterByNumericValues } = numericFilters;
 
   const handleClick = () => {
-    setNumericFilters({
-      filterByNumericValues: [
-        ...numericFilters.filterByNumericValues,
-        choosenFilters,
-      ],
-    });
-    const updatedFilters = [...filterByNumericValues, choosenFilters];
-    setFilterOptions((state) => state
-      .filter((o) => (!updatedFilters.some((f) => Object.values(f).includes(o)))));
-    setChoosenFilters({
-      ...choosenFilters,
-      column: filterOptions[1],
-    });
+    console.log(choosenFilters);
+    if (choosenFilters.column) {
+      setNumericFilters({
+        filterByNumericValues: [
+          ...numericFilters.filterByNumericValues,
+          choosenFilters,
+        ],
+      });
+      const updatedFilters = [...filterByNumericValues, choosenFilters];
+      setFilterOptions((state) => state
+        .filter((o) => (!updatedFilters.some((f) => Object.values(f).includes(o)))));
+      setChoosenFilters({
+        ...choosenFilters,
+        column: filterOptions[1],
+      });
+    }
   };
 
   const handlechange = (event) => {
