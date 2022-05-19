@@ -1,7 +1,7 @@
 # ✴️ 🪐 Star Wars Planets Filters 🪐 ✴️ 
 
 <p> Projeto desenvolvido durante o módulo de front-end na <a href="https://www.betrybe.com/" target="_blank">
-      <img src="https://avatars.githubusercontent.com/u/82593112?s=48&amp;v=4" width="24" height="24" alt="@trybe-tech-ops"> Trybe
+      Trybe <img src="https://avatars.githubusercontent.com/u/82593112?s=48&amp;v=4" width="24" height="24" alt="@trybe-tech-ops">
    </a> para aprender algumas hardskills, o desafio era consumir dados de uma API de star wars e montar uma tabela criando alguns filtros customizados.
 </p>
    
